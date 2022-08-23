@@ -1,0 +1,23 @@
+{
+  "name": "vite-plugin-set",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "changeset publish",
+    "template": "plop"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.24.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7"
+  },
+  "dependencies": {
+    "tsup": "^6.2.2"
+  }
+}

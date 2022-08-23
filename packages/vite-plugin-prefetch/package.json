@@ -1,0 +1,24 @@
+{
+  "name": "vite-plugin-prefetch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup",
+    "build:watch": "tsup --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tsup": "^6.2.2",
+    "vite": "^3.0.7",
+    "vitest": "^0.22.1"
+  }
+}

@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "pnpm --filter=vite-plugin-* run build",
     "preview": "vite preview",
     "changeset": "changeset",
     "version": "changeset version",

@@ -14,7 +14,8 @@ export default function(/** @type {import('plop').NodePlopAPI} */ plop) {
           type: "add",
           path: "packages/{{name}}/tsup.config.ts",
           templateFile: "template/tsup.config.hbs",
-        }, {
+        },
+        {
           type: "add",
           path: "packages/{{name}}/README.md",
           templateFile: "template/README.hbs",

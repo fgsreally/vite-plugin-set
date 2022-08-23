@@ -14,10 +14,10 @@ export default function recorder(path: string) {
       }
       let lastStorage = JSON.parse(readFileSync(filePath).toString());
       storage = lastStorage;
-      server.middlewares.use((req, res, next) => {
+      server.middlewares.use((req: any, res, next) => {
         let key: any = (req.url as string).match(/VITE_RECORD(.*)/);
         if (key[1] && !storage[key[1]]) {
-          req.on("data", (chunk) => {
+          req.on("data", (chunk: Buffer) => {
             let ret = JSON.parse(chunk.toString());
             storage[key[1]] = ret;
             writeFile(filePath, JSON.stringify(storage), (err) => {

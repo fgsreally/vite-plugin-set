@@ -1,5 +1,11 @@
 # vite-plugin-sfcmore
 
+## 1.0.2
+
+### Patch Changes
+
+- 755d127: add custom block
+
 ## 1.0.1
 
 ### Patch Changes

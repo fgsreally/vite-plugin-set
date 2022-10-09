@@ -23,5 +23,8 @@
     "lodash-es": "^4.17.21",
     "tsup": "^6.2.2",
     "vite": "^3.0.7"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.6"
   }
 }

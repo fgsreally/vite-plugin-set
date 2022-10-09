@@ -4,28 +4,43 @@ export type Extension = {
   key: string;
   transformer?: (code: string, query?: any) => string;
 };
+
+export type tagExtension = {
+  reg: RegExp;
+  key: string;
+  transformer: (...opts: any[]) => string;
+};
 export function compile(
   source: string,
-  transform: Extension[],
-  addon: Extension[]
+  transformExt: Extension[],
+  addonExt: Extension[],
+  tagExt: tagExtension[]
 ) {
   let addonScript = "";
   let transformScript = "";
+  for (let i of tagExt) {
+    console.log(i.reg.test(source))
+    source = source.replace(i.reg, (str, ...args) => {
+      console.log(args)
+      addonScript += i.transformer(...args)+ "\n";;
+      return "";
+    });
+  }
   source = source.replace(scriptRE, (str, tag, script) => {
     let query = parseQuery(tag);
-  
-    for (let i of transform) {
+
+    for (let i of transformExt) {
       if (i.key in query) {
         transformScript += i.transformer
-          ? i.transformer(script, query)
+          ? i.transformer(script, query) + "\n"
           : script + "\n";
         return "";
       }
     }
-    for (let i of addon) {
+    for (let i of addonExt) {
       if (i.key in query) {
         addonScript += i.transformer
-          ? i.transformer(script, query)
+          ? i.transformer(script, query) + "\n"
           : script + "\n";
         return "";
       }

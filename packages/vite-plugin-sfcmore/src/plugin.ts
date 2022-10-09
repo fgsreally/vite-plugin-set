@@ -1,6 +1,6 @@
-import { createFilter, Plugin } from "vite";
-import { compile, Extension } from "./compiler";
-import { defaultAddon, defaultTransform } from "./extension";
+import { createFilter, PluginOption } from "vite";
+import { compile, Extension, tagExtension } from "./compiler";
+import { defaultAddon, defaultTag, defaultTransform } from "./extension";
 
 interface Options {
   include?: string | RegExp | (string | RegExp)[];
@@ -9,10 +9,11 @@ interface Options {
 
 let codeMap: Map<string, string> = new Map();
 export function sfc(
-  addon: Extension[] = defaultAddon,
-  transform: Extension[] = defaultTransform,
+  addonExt: Extension[] = defaultAddon,
+  transformExt: Extension[] = defaultTransform,
+  tagExt: tagExtension[] = defaultTag,
   opts: Options = {}
-): Plugin[] {
+): PluginOption[] {
   let { include = /\.vue$/, exclude } = opts;
   const filter = createFilter(include, exclude);
 
@@ -23,7 +24,12 @@ export function sfc(
 
       transform(code: string, id: string) {
         if (filter(id)) {
-          let { source, addonScript } = compile(code, transform, addon);
+          let { source, addonScript } = compile(
+            code,
+            transformExt,
+            addonExt,
+            tagExt
+          );
           codeMap.set(id, addonScript);
           return source;
         }

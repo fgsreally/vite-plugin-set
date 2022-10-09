@@ -1,6 +1,11 @@
 <script test="aaa" setup>
 return 11;
 </script>
+
+<docs>
+
+这谁知道啊
+</docs>
 <script setup>
 import { ref } from "vue";
 

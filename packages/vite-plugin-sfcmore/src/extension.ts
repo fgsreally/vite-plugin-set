@@ -10,6 +10,7 @@ export let Server = {
 };
 
 export let Docs = {
+  reg: /<docs>([\s\S]*)<\/docs>/,
   key: "docs",
   transformer: (code: string) => {
     return `export let docs=${JSON.stringify(code)}`;
@@ -23,5 +24,6 @@ export let Type = {
   },
 };
 
-export let defaultAddon = [Test, Docs];
+export let defaultAddon = [Test];
 export let defaultTransform = [Server];
+export let defaultTag = [Docs];

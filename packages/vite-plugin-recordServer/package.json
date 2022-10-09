@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-record",
+  "name": "vite-plugin-recordserver",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
     "@types/fs-extra": "^9.0.13",
     "colors": "^1.4.0",
     "fs-extra": "^10.1.0",
+    "lodash-es": "^4.17.21",
     "tsup": "^6.2.2",
-    "vite": "^3.0.7",
-    "vitest": "^0.22.1"
+    "vite": "^3.0.7"
   }
 }

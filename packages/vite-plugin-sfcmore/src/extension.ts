@@ -24,6 +24,6 @@ export let Type = {
   },
 };
 
-export let defaultAddon = [Test];
+export let defaultAddon = [Test, Type];
 export let defaultTransform = [Server];
 export let defaultTag = [Docs];

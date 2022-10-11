@@ -29,7 +29,6 @@ export default function Prefetch(
           code +
           `import.meta.hot.on("${HMREvent}", ()=>{
           const lazyPages = ${JSON.stringify(lazyImport)};
-          console.log(lazyPages)
           lazyPages.forEach(item => fetch(item));
       }
           )`
@@ -44,6 +43,5 @@ function sendHMRToClient() {
     type: "custom",
     event: HMREvent,
   });
-  console.log("hmr");
   isFinish = true;
 }

@@ -1,5 +1,11 @@
 # vite-plugin-recordServer
 
+## 1.0.1
+
+### Patch Changes
+
+- delete console.log
+
 ## 1.1.0
 
 ### Minor Changes

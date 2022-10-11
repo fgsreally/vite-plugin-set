@@ -19,9 +19,7 @@ export function compile(
   let addonScript = "";
   let transformScript = "";
   for (let i of tagExt) {
-    console.log(i.reg.test(source))
     source = source.replace(i.reg, (str, ...args) => {
-      console.log(args)
       addonScript += i.transformer(...args)+ "\n";;
       return "";
     });

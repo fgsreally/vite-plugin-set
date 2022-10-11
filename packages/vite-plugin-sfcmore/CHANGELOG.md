@@ -1,5 +1,11 @@
 # vite-plugin-sfcmore
 
+## 1.0.3
+
+### Patch Changes
+
+- delete console.log
+
 ## 1.0.2
 
 ### Patch Changes

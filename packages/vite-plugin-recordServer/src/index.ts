@@ -59,7 +59,6 @@ function defaultTransform(code: string, id: string) {
   }
   if (/\.vue$/.test(id)) {
     return code.replace(/\s\/\/\$(single|array)/, (_, type) => {
-      console.log(_);
       return `import {getCurrentInstance} from "vue"
        window.$record({
         type:"vue",

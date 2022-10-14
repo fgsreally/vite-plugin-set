@@ -11,6 +11,7 @@ console.log(test,docs)
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
+      {{test}}
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>

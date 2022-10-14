@@ -1,5 +1,5 @@
 <script test="aaa" setup>
-return 11;
+return 22;
 </script>
 
 <docs>

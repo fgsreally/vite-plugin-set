@@ -6,11 +6,14 @@ import { basename } from "path";
 export default defineConfig({
   plugins: [vue(), ...sfc()],
   build: {
+    cssCodeSplit: true,
     lib: {
       entry: "./src/index.js",
       formats: ["es"],
       fileName: (format) => `my-lib.${format}.js`,
     },
-   
+    rollupOptions: {
+      external: ["vue"],
+    },
   },
 });

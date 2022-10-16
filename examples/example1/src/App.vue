@@ -1,8 +1,22 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld, { test,docs } from "./components/HelloWorld.vue";
-console.log(test,docs)
+// import HelloWorld from "./components/HelloWorld.vue";
+import { Hello as HelloWorld, addon, css } from "../dist/my-lib.es";
+import { onMounted, ref } from "vue";
+let test = ref("");
+function addcss(url) {
+  let css = document.createElement("link");
+  css.href = url;
+  css.rel = "stylesheet";
+  css.type = "text/css";
+  document.head.appendChild(css);
+}
+onMounted(async () => {
+  addcss(css)
+  let { test: data } = await addon();
+  test.value = data;
+});
 </script>
 
 <template>
@@ -11,7 +25,7 @@ console.log(test,docs)
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
-      {{test}}
+      {{ test }}
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>

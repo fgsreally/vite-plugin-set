@@ -27,3 +27,7 @@ export let Type = {
 export let defaultAddon = [Test, Type];
 export let defaultTransform = [Server];
 export let defaultTag = [Docs];
+
+export let addonCss = (url) => `
+export let css= ${url}
+`;

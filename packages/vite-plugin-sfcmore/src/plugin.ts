@@ -1,12 +1,17 @@
 import { createFilter, PluginOption } from "vite";
 import { compile, Extension, tagExtension } from "./compiler";
-import { defaultAddon, defaultTag, defaultTransform } from "./extension";
+import {
+  addonCss,
+  defaultAddon,
+  defaultTag,
+  defaultTransform,
+} from "./extension";
 import { basename } from "path";
 interface Options {
   include?: string | RegExp | (string | RegExp)[];
   exclude?: string | RegExp | (string | RegExp)[];
 }
-
+let mode: string;
 let codeMap: Map<string, string> = new Map();
 export function sfc(
   isBuild: boolean = true,
@@ -30,6 +35,7 @@ export function sfc(
       enforce: "pre",
 
       config(conf: any, { command }) {
+        mode = command;
         if (isBuild && command === "build") {
           if (!conf.build) {
             conf.build = {};
@@ -41,7 +47,7 @@ export function sfc(
             conf.build.rollupOptions.output = {};
           }
           conf.build.rollupOptions.output.chunkFileNames = "[name].js";
-
+          conf.build.rollupOptions.output.assetFileNames = "[name][extname]";
           conf.build.rollupOptions.output.manualChunks = (id: string) => {
             if (id.endsWith(".vue")) {
               return basename(id, ".vue");
@@ -76,10 +82,19 @@ export function sfc(
       transform(code: string, id: string) {
         if (filter(id)) {
           let addonCode = codeMap.has(id + "?vue&addon")
-            ? `export * from "${id}?vue&addon"`
+            ? `export async function addon() {
+              return await import("${id}?vue&addon");
+            }`
             : "";
 
-          return code + "\n" + addonCode;
+          return (
+            code +
+            "\n" +
+            addonCode +
+            (mode === "build"
+              ? addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
+              : "")
+          );
         }
       },
     },

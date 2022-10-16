@@ -1,5 +1,11 @@
 # vite-plugin-sfcmore
 
+## 1.0.5
+
+### Patch Changes
+
+- add addon css
+
 ## 1.0.4
 
 ### Patch Changes

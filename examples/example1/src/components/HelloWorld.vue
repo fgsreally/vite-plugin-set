@@ -1,5 +1,5 @@
 <script test="aaa" setup>
-return 22;
+return 22334;
 </script>
 
 <docs>
@@ -13,7 +13,7 @@ defineProps({
   msg: String,
 });
 
-const count = ref(0);
+const count = ref(2);
 </script>
 
 <template>
@@ -43,6 +43,6 @@ const count = ref(0);
 
 <style scoped>
 .read-the-docs {
-  color: #888;
+  color: red;
 }
 </style>

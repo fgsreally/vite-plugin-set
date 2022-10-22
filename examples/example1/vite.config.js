@@ -4,7 +4,11 @@ import { sfc } from "vite-plugin-sfcmore";
 import { basename } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), ...sfc()],
+  plugins: [vue(), ...sfc(),{
+    transform(code,id){
+console.log(id)
+    }
+  }],
   build: {
     cssCodeSplit: true,
     lib: {

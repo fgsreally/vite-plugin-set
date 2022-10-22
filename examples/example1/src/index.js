@@ -1,3 +1,1 @@
-import Hello, { addon, css } from "./components/HelloWorld.vue";
-
-export { Hello, addon,css };
+export let hello =  import("./components/HelloWorld.vue");

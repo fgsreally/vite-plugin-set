@@ -90,10 +90,10 @@ export function sfc(
           return (
             code +
             "\n" +
-            addonCode +
-            (mode === "build"
-              ? addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
-              : "")
+            addonCode + addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
+            // (mode === "build"
+            //   ? addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
+            //   : "")
           );
         }
       },

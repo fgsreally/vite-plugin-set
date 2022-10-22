@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import HelloWorld from "./components/HelloWorld.vue";
-import { Hello as HelloWorld, addon, css } from "../dist/my-lib.es";
+import HelloWorld, { addon } from "./components/HelloWorld.vue";
 import { onMounted, ref } from "vue";
 let test = ref("");
 function addcss(url) {
@@ -13,7 +13,7 @@ function addcss(url) {
   document.head.appendChild(css);
 }
 onMounted(async () => {
-  addcss(css)
+  // addcss(css);
   let { test: data } = await addon();
   test.value = data;
 });

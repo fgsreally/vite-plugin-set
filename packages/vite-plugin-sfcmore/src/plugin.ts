@@ -14,16 +14,18 @@ interface Options {
 let mode: string;
 let codeMap: Map<string, string> = new Map();
 export function sfc(
+  version: string = "",
   isBuild: boolean = true,
   addon: {
     addonExt: Extension[];
     transformExt: Extension[];
     tagExt: tagExtension[];
   } = {
-    addonExt: defaultAddon,
-    transformExt: defaultTransform,
-    tagExt: defaultTag,
-  },
+      addonExt: defaultAddon,
+      transformExt: defaultTransform,
+      tagExt: defaultTag,
+    },
+
   opts: Options = {}
 ): PluginOption[] {
   let { include = /\.vue$/, exclude } = opts;
@@ -46,8 +48,8 @@ export function sfc(
           if (!conf.build.rollupOptions.output) {
             conf.build.rollupOptions.output = {};
           }
-          conf.build.rollupOptions.output.chunkFileNames = "[name].js";
-          conf.build.rollupOptions.output.assetFileNames = "[name][extname]";
+          conf.build.rollupOptions.output.chunkFileNames = `[name]${version ? '@' + version : ""}.js`;
+          conf.build.rollupOptions.output.assetFileNames = `[name]${version ? '@' + version : ""}[extname]`;
           conf.build.rollupOptions.output.manualChunks = (id: string) => {
             if (id.endsWith(".vue")) {
               return basename(id, ".vue");

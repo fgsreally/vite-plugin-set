@@ -1,5 +1,11 @@
 # vite-plugin-sfcmore
 
+## 1.0.6
+
+### Patch Changes
+
+- add version options
+
 ## 1.0.5
 
 ### Patch Changes

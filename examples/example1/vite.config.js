@@ -5,7 +5,7 @@ import { basename } from "path";
 import { recordPlugin } from "vite-plugin-devrecord";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), recordPlugin(), ...sfc()],
+  plugins: [vue(), recordPlugin(), ...sfc("1.0.1")],
   build: {
     cssCodeSplit: true,
     lib: {

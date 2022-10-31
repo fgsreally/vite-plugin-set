@@ -1,9 +1,8 @@
-import { resolve } from 'path';
+import { resolve ,dirname} from 'path';
 import { PluginOption, ViteDevServer } from "vite"
 import fse from "fs-extra"
 import colors from "colors"
 import { fileURLToPath } from 'url'
-import { dirname } from 'path'
 
 
 const RE = /VITE_PLUGIN_DEVRECORD$/
@@ -25,7 +24,7 @@ export function recordPlugin(): PluginOption {
 
             const data = JSON.parse(fse.readFileSync(CONFIG_PATH).toString())
 
-            server.middlewares.use((req, res, next) => {
+            server.middlewares.use((req: any, res, next) => {
                 let isRecord = RE.test(req.url as string) && req.method === 'POST';
                 if (isRecord) {
                     req.on("data", (chunk: Buffer) => {

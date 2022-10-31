@@ -2,13 +2,10 @@ import { defineConfig } from "vite";
 import vue, { parseVueRequest } from "@vitejs/plugin-vue";
 import { sfc } from "vite-plugin-sfcmore";
 import { basename } from "path";
+import { recordPlugin } from "vite-plugin-devrecord";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), ...sfc(),{
-    transform(code,id){
-console.log(id)
-    }
-  }],
+  plugins: [vue(), recordPlugin(), ...sfc()],
   build: {
     cssCodeSplit: true,
     lib: {

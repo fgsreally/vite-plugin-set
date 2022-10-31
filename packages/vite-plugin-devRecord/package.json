@@ -1,0 +1,41 @@
+{
+  "name": "vite-plugin-devrecord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/plugin.js",
+  "module": "dist/plugin.mjs",
+  "scripts": {
+    "build": "tsup"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/plugin.js",
+      "import": "./dist/plugin.mjs",
+      "types": "./dist/plugin.d.js"
+    },
+    "./web": {
+      "require": "./dist/service.js",
+      "import": "./dist/service.mjs",
+      "types": "./dist/service.d.js"
+    },
+    "./record": {
+      "require": "./record.json",
+      "import": "./record.json"
+    }
+  },
+  "files": [
+    "dist",
+    "record.json"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "colors": "^1.4.0",
+    "fs-extra": "^10.1.0"
+  },
+  "devDependencies": {
+    "vite": "^3.2.1"
+  }
+}

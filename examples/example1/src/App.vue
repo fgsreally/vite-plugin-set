@@ -2,20 +2,20 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import HelloWorld from "./components/HelloWorld.vue";
-import HelloWorld, { addon } from "./components/HelloWorld.vue";
+import HelloWorld from "./components/HelloWorld.vue";
 import { onMounted, ref } from "vue";
+import { register } from "vite-plugin-devrecord/web";
+import record from "vite-plugin-devrecord/record"
 let test = ref("");
-function addcss(url) {
-  let css = document.createElement("link");
-  css.href = url;
-  css.rel = "stylesheet";
-  css.type = "text/css";
-  document.head.appendChild(css);
-}
-onMounted(async () => {
-  // addcss(css);
-  let { test: data } = await addon();
-  test.value = data;
+
+console.log(record)
+register({
+  key: "test",
+  label: "测试",
+  handler(data) {
+    console.log(data)
+    return 1;
+  },
 });
 </script>
 

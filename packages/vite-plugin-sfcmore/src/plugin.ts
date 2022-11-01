@@ -67,7 +67,7 @@ export function sfc(
             addon.addonExt,
             addon.tagExt
           );
-          if (addonScript) codeMap.set(id + "?vue&addon", addonScript);
+          codeMap.set(id + "?vue&addon", addonScript + `\nexport let code=${JSON.stringify(source)}`);
           return source;
         }
       },

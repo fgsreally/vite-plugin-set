@@ -1,8 +1,11 @@
 // import mitt from "mitt"
 
 // export const emitter = mitt()
+let record: any = {}
 
 export function register(event: { key: string, label: string, handler: (data: any) => any }) {
+    if (record[event.key]) return
+    record[event.key] = true
     let btn = document.createElement("button")
     btn.classList.add('vite-plugin-devrecord')
     btn.classList.add(event.key)
@@ -11,7 +14,8 @@ export function register(event: { key: string, label: string, handler: (data: an
     let data = {}
 
     async function btnFn(e: MouseEvent) {
-        let ret = event.handler(data)
+        let ret = event.handler(data,
+        )
         if (ret) {
             const response = await fetch('/VITE_PLUGIN_DEVRECORD', {
                 method: 'POST',

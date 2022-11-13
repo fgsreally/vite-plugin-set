@@ -1,5 +1,11 @@
 # vite-plugin-sfcmore
 
+## 1.0.7
+
+### Patch Changes
+
+- only work when vite lib config exist
+
 ## 1.0.6
 
 ### Patch Changes

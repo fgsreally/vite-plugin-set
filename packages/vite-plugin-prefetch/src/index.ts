@@ -47,7 +47,7 @@ export function prefetch(
               rel: "prefetch",
               href: `/${i}`,
             },
-            injectTo: "head-prepend",
+            injectTo: "head",
           });
         }
       }

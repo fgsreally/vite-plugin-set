@@ -12,10 +12,10 @@ interface Options {
   exclude?: string | RegExp | (string | RegExp)[];
 }
 let mode: string;
+let isLib: boolean = false;
 let codeMap: Map<string, string> = new Map();
 export function sfc(
   version: string = "",
-  isBuild: boolean = true,
   addon: {
     addonExt: Extension[];
     transformExt: Extension[];
@@ -37,8 +37,9 @@ export function sfc(
       enforce: "pre",
 
       config(conf: any, { command }) {
+        if (conf.build.lib) isLib = true;
         mode = command;
-        if (isBuild && command === "build") {
+        if (isLib && command === "build") {
           if (!conf.build) {
             conf.build = {};
           }
@@ -84,12 +85,12 @@ export function sfc(
       enforce: "post",
 
       load(id) {
-        if (id.endsWith(`?vue&addon`)) {
+        if (id.endsWith(`?vue&addon`) && isLib) {
           return codeMap.get(id);
         }
       },
       transform(code: string, id: string) {
-        if (filter(id)) {
+        if (filter(id) && isLib) {
           let addonCode = codeMap.has(id + "?vue&addon")
             ? `export async function addon() {
               return await import("${id}?vue&addon");

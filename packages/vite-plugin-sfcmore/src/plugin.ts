@@ -21,10 +21,10 @@ export function sfc(
     transformExt: Extension[];
     tagExt: tagExtension[];
   } = {
-      addonExt: defaultAddon,
-      transformExt: defaultTransform,
-      tagExt: defaultTag,
-    },
+    addonExt: defaultAddon,
+    transformExt: defaultTransform,
+    tagExt: defaultTag,
+  },
 
   opts: Options = {}
 ): PluginOption[] {
@@ -48,8 +48,12 @@ export function sfc(
           if (!conf.build.rollupOptions.output) {
             conf.build.rollupOptions.output = {};
           }
-          conf.build.rollupOptions.output.chunkFileNames = `[name]${version ? '@' + version : ""}.js`;
-          conf.build.rollupOptions.output.assetFileNames = `[name]${version ? '@' + version : ""}[extname]`;
+          conf.build.rollupOptions.output.chunkFileNames = `[name]${
+            version ? "@" + version : ""
+          }.js`;
+          conf.build.rollupOptions.output.assetFileNames = `[name]${
+            version ? "@" + version : ""
+          }[extname]`;
           conf.build.rollupOptions.output.manualChunks = (id: string) => {
             if (id.endsWith(".vue")) {
               return basename(id, ".vue");
@@ -67,7 +71,10 @@ export function sfc(
             addon.addonExt,
             addon.tagExt
           );
-          codeMap.set(id + "?vue&addon", addonScript + `\nexport let code=${JSON.stringify(source)}`);
+          codeMap.set(
+            id + "?vue&addon",
+            addonScript + `\nexport let code=${JSON.stringify(source)}`
+          );
           return source;
         }
       },
@@ -92,7 +99,8 @@ export function sfc(
           return (
             code +
             "\n" +
-            addonCode + addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
+            addonCode +
+            addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
             // (mode === "build"
             //   ? addonCss("import.meta.url.replace(/\\.js(.*)/,'.css')")
             //   : "")

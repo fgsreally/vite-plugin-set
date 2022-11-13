@@ -2,8 +2,8 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import HelloWorld from "./components/HelloWorld.vue";
-import HelloWorld, { addon } from "./components/HelloWorld.vue";
-import { onMounted, ref } from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import { ref } from "vue";
 
 let test = ref("");
 </script>

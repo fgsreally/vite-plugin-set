@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "vite-plugin-devrecord": "workspace:^1.0.0",
+    "vite-plugin-prefetch": "workspace:^1.0.1",
     "vite-plugin-sfcmore": "workspace:^1.0.1",
     "vue": "^3.2.37"
   },
